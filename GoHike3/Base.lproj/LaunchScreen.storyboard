@@ -1,27 +1,69 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vT0-kk-zEH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="EHf-IW-A2E">
+        <scene sceneID="ioQ-lo-ZYT">
             <objects>
-                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                <viewController id="vT0-kk-zEH" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
-                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                        <viewControllerLayoutGuide type="top" id="7PN-9V-JDQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gaa-S4-efH"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="sTq-du-q2a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright © 2017 jmchen. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Yyq-Ko-hD4">
+                                <rect key="frame" x="20" y="626.5" width="335" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GoHike" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="UFq-uX-rru">
+                                <rect key="frame" x="16" y="83" width="335" height="43"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="dqe-XR-lSr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoHikeIcon.001" translatesAutoresizingMaskIntoConstraints="NO" id="9Ee-8T-gQl">
+                                <rect key="frame" x="0.0" y="184" width="375" height="341"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9Ee-8T-gQl" firstAttribute="leading" secondItem="sTq-du-q2a" secondAttribute="leading" id="33M-KD-6Rg"/>
+                            <constraint firstItem="Yyq-Ko-hD4" firstAttribute="leading" secondItem="sTq-du-q2a" secondAttribute="leading" constant="20" symbolic="YES" id="GI1-hs-mxs"/>
+                            <constraint firstAttribute="centerX" secondItem="Yyq-Ko-hD4" secondAttribute="centerX" id="JQe-iI-6DQ"/>
+                            <constraint firstAttribute="bottom" secondItem="Yyq-Ko-hD4" secondAttribute="bottom" constant="20" id="JZ4-m0-Iye"/>
+                            <constraint firstAttribute="trailing" secondItem="9Ee-8T-gQl" secondAttribute="trailing" id="ddl-B0-0Jp"/>
+                            <constraint firstItem="UFq-uX-rru" firstAttribute="leading" secondItem="sTq-du-q2a" secondAttribute="leadingMargin" id="jK9-bJ-NZh"/>
+                            <constraint firstItem="9Ee-8T-gQl" firstAttribute="top" secondItem="UFq-uX-rru" secondAttribute="bottom" constant="58" id="kh0-X9-FNt"/>
+                            <constraint firstItem="Gaa-S4-efH" firstAttribute="top" secondItem="9Ee-8T-gQl" secondAttribute="bottom" constant="142" id="rbQ-0B-hv1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UFq-uX-rru" secondAttribute="trailing" constant="8" id="tQU-W8-a4G"/>
+                            <constraint firstItem="Yyq-Ko-hD4" firstAttribute="top" secondItem="9Ee-8T-gQl" secondAttribute="bottom" constant="101.5" id="wKV-12-Xhg"/>
+                            <constraint firstItem="UFq-uX-rru" firstAttribute="top" secondItem="7PN-9V-JDQ" secondAttribute="bottom" constant="63" id="znd-Cx-nle"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yd0-sQ-Nox" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="GoHikeIcon.001" width="212" height="142"/>
+    </resources>
 </document>
