@@ -5,6 +5,8 @@
 //  Created by James Chen on 5/8/17.
 //  Copyright © 2017 jmchen. All rights reserved.
 //
+//  This is the Final Version of GoHike as of 6/21/17
+
 // Comments to Fix
 /*
  1. The 3Dview button doesn't do anything if the app is in Hybrid or Standard mode.  Perhaps a better approach would be to use a UISegmentedControl.  Probably you should have four options:  Standard, 3D, Satellite, and Hybrid.  One advantage of using a UISegmentedControl is that it would make it obvious which option is currently selected, which your current approach doesn't really do.
