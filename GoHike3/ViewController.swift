@@ -24,7 +24,7 @@ import MapKit
 class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
     
     // constants below are the camera settings
-    let distance: CLLocationDistance = 500
+    let distance: CLLocationDistance = 400
     let pitch: CGFloat = 60
     let heading = 90.0
     
@@ -45,9 +45,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     @IBOutlet weak var tempurature: UILabel!
     @IBOutlet weak var weatherType: UILabel!
     
-    // using Progress View for speedBar Display:
-    @IBOutlet weak var progressView: UIProgressView! // alternative view for speedbar
-    
+    // Start Button for drawing the route
     @IBAction func Reset(_ sender: Any) {
         // This is the start-button and also stores the starting point coordinates:
         refreshView()
@@ -58,16 +56,23 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             sourceLocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
         }
         
+        // use Timer to try to allow for drawing a circular route where coord(i) == coord(f)
+        /*
+        Timer.scheduledTimer(withTimeInterval: <#T##TimeInterval#>, repeats: <#T##Bool#>) { (<#Timer#>) in
+            <#code#>
+        }
+        */
     }
     
-    
+    // use the start and final coords for plotting the route
     @IBAction func endDrawPath(_ sender: Any) {
         
         drawMapPath()
         
     }
     
-    
+    // using Progress View for speedBar Display:
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressViewDist: UIProgressView!
     @IBOutlet weak var mapView: MKMapView!
     
@@ -75,6 +80,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     @IBAction func changeMapType(_ sender: UIButton) {
         
         mapViewType = "Standard"
+        
         if let coord = manager.location?.coordinate {
             let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
             mapView.setRegion(region, animated: true)
@@ -136,6 +142,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         
     }
     
+    // Button for centering the user location
     @IBAction func centerLocation(_ sender: UIButton) {
         
         if let coord = manager.location?.coordinate {
@@ -181,14 +188,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             //manager.requestAlwaysAuthorization()
             manager.startUpdatingLocation()
             
-            
-            // Below code will add a marker at user location every 10 sec.
-            Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
-                
-                //self.drawMapPath()
-                
-            })
-            
             mapView.showsUserLocation = true
             mapView.showsCompass = true
             mapView.showsScale = true
@@ -217,6 +216,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             let lat = destinationCoord.latitude
             let long = destinationCoord.longitude
             destinationLocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        }
+        
+        // in case the 'stop' button is pressed first by mistake
+        if sourceLocation == nil {
+            sourceLocation = destinationLocation
         }
         
         
@@ -326,10 +330,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             }
             
             /////////////////////////////////////////////////////////////
+            
+            // let nycLocation = CLLocationCoordinate2D(latitude: 40.731302, longitude: -73.997065)
+            
             //print("manager.location?.coordinate = \(String(describing: manager.location?.coordinate))")
             let region = MKCoordinateRegionMakeWithDistance((manager.location?.coordinate)!, 1000, 1000)
             mapView.setRegion(region, animated: false)
             updateCount += 1
+            
         }
         
         // 2. dist method using distance between two locations
