@@ -31,7 +31,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     
     var sourceLocation: CLLocationCoordinate2D!
     var destinationLocation: CLLocationCoordinate2D!
-    var mapViewType = "Standard"
+    var mapViewType = "Standard2D"
     var manager = CLLocationManager()
     var totalDistanceMeters2:Double = 0.0
     var preTimeInterval = 0.0
@@ -44,6 +44,65 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     @IBOutlet weak var citiName: UILabel!
     @IBOutlet weak var tempurature: UILabel!
     @IBOutlet weak var weatherType: UILabel!
+    
+    
+    @IBAction func toggleViews(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            if let coord = manager.location?.coordinate {
+                let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
+                mapView.setRegion(region, animated: true)
+            }
+            mapView.mapType = .standard
+            mapViewType = "Standard2D"
+            
+        } else if sender.selectedSegmentIndex == 1 {
+            if let coord = manager.location?.coordinate {
+                let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
+                mapView.setRegion(region, animated: true)
+            }
+            mapView.mapType = .satellite
+            mapViewType = "Satellite2D"
+            
+        } else {
+            if let coord = manager.location?.coordinate {
+                let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
+                mapView.setRegion(region, animated: true)
+            }
+            
+            mapView.mapType = .hybrid
+            mapViewType = "Hybrid2D"
+            
+        }
+        
+    }
+    
+    @IBAction func toggleView3D(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
+            mapView.mapType = .standard
+            mapView.showsBuildings = true
+            mapView.setCamera(camera, animated: true)
+            mapViewType = "StandardFlyover"
+            
+        } else if sender.selectedSegmentIndex == 1 {
+            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
+            mapView.mapType = .satelliteFlyover
+            mapView.showsBuildings = true
+            mapView.setCamera(camera, animated: true)
+            mapViewType = "SatelliteFlyover"
+            
+        } else {
+            
+            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
+            mapView.mapType = .hybridFlyover
+            mapView.showsBuildings = true
+            mapView.setCamera(camera, animated: true)
+            mapViewType = "HybridFlyover"
+        }
+        
+    }
     
     // Start Button for drawing the route
     @IBAction func Reset(_ sender: Any) {
@@ -148,7 +207,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         if let coord = manager.location?.coordinate {
             //
             switch mapViewType {
-            case "Standard":
+            case "Standard2D","Satellite2D","Hybrid2D":
                 let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
                 mapView.setRegion(region, animated: true)
             case "StandardFlyover":
@@ -279,8 +338,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             let region = MKCoordinateRegionMakeWithDistance(self.sourceLocation, 2000, 2000)
             self.mapView.setRegion(region, animated: true)
             
-            //let rect = route.polyline.boundingMapRect
-            //self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+            self.mapViewType = "Standard"
         }
         
         sourceLocation = destinationLocation
