@@ -24,9 +24,9 @@ import MapKit
 class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
     
     // constants below are the camera settings
-    let distance: CLLocationDistance = 400
-    let pitch: CGFloat = 60
-    let heading = 90.0
+    let distance: CLLocationDistance = 500
+    let pitch: CGFloat = 75
+    let heading = 45.0
     
     
     var sourceLocation: CLLocationCoordinate2D!
