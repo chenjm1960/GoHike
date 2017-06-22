@@ -23,15 +23,20 @@ import MapKit
 
 class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
     
-    // constants below are the camera settings
-    let distance: CLLocationDistance = 500
-    let pitch: CGFloat = 75
-    let heading = 45.0
+    // constants below are the camera settings for overhead views(2D like)
+    let distance1: CLLocationDistance = 2000
+    let pitch1: CGFloat = 0.0
+    let heading1 = 0.0
+    
+    // constants below are the camera settings for flyover views(3D like)
+    let distance2: CLLocationDistance = 500
+    let pitch2: CGFloat = 60.0
+    let heading2 = 30.0
     
     
     var sourceLocation: CLLocationCoordinate2D!
     var destinationLocation: CLLocationCoordinate2D!
-    var mapViewType = "Standard2D"
+    var mapViewType = "SatelliteFlyover"
     var manager = CLLocationManager()
     var totalDistanceMeters2:Double = 0.0
     var preTimeInterval = 0.0
@@ -49,28 +54,24 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     @IBAction func toggleViews(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 0 {
-            if let coord = manager.location?.coordinate {
-                let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
-                mapView.setRegion(region, animated: true)
-            }
+            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance1, pitch: pitch1, heading: heading1)
             mapView.mapType = .standard
+            mapView.showsBuildings = true
+            mapView.setCamera(camera, animated: true)
             mapViewType = "Standard2D"
             
         } else if sender.selectedSegmentIndex == 1 {
-            if let coord = manager.location?.coordinate {
-                let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
-                mapView.setRegion(region, animated: true)
-            }
+            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance1, pitch: pitch1, heading: heading1)
             mapView.mapType = .satellite
+            mapView.showsBuildings = true
+            mapView.setCamera(camera, animated: true)
             mapViewType = "Satellite2D"
             
         } else {
-            if let coord = manager.location?.coordinate {
-                let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
-                mapView.setRegion(region, animated: true)
-            }
-            
+            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance1, pitch: pitch1, heading: heading1)
             mapView.mapType = .hybrid
+            mapView.showsBuildings = true
+            mapView.setCamera(camera, animated: true)
             mapViewType = "Hybrid2D"
             
         }
@@ -80,14 +81,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     @IBAction func toggleView3D(_ sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == 0 {
-            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
+            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance2, pitch: pitch2, heading: heading2)
             mapView.mapType = .standard
             mapView.showsBuildings = true
             mapView.setCamera(camera, animated: true)
             mapViewType = "StandardFlyover"
             
         } else if sender.selectedSegmentIndex == 1 {
-            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
+            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance2, pitch: pitch2, heading: heading2)
             mapView.mapType = .satelliteFlyover
             mapView.showsBuildings = true
             mapView.setCamera(camera, animated: true)
@@ -95,7 +96,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             
         } else {
             
-            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
+            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance2, pitch: pitch2, heading: heading2)
             mapView.mapType = .hybridFlyover
             mapView.showsBuildings = true
             mapView.setCamera(camera, animated: true)
@@ -135,71 +136,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     @IBOutlet weak var progressViewDist: UIProgressView!
     @IBOutlet weak var mapView: MKMapView!
     
-    // setting for the 2D button
-    @IBAction func changeMapType(_ sender: UIButton) {
-        
-        mapViewType = "Standard"
-        
-        if let coord = manager.location?.coordinate {
-            let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
-            mapView.setRegion(region, animated: true)
-        }
-        
-        let title = sender.titleLabel?.text
-        
-        switch title!{
-        case "Satellite":
-            mapView.mapType = .satellite
-            sender.setTitle("Hybrid", for: .normal)
-        case "Hybrid":
-            mapView.mapType = .hybrid
-            sender.setTitle("Standard", for: .normal)
-        case "Standard":
-            mapView.mapType = .standard
-            sender.setTitle("Satellite", for: .normal)
-        default:
-            mapView.mapType = .standard
-            sender.setTitle("Sat Fly", for: .normal)
-            
-        }
-    }
-    // setting for the 3D button
-    @IBAction func flyoverMap(_ sender: UIButton) {
-        
-        let title = sender.titleLabel?.text
-        
-        switch title!{
-        case "Satellite3D":
-            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
-            mapView.mapType = .satelliteFlyover
-            mapView.showsBuildings = true
-            mapView.setCamera(camera, animated: true)
-            mapViewType = "SatelliteFlyover"
-            sender.setTitle("Hybrid3D", for: .normal)
-            break
-        case "Hybrid3D":
-            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
-            mapView.mapType = .hybridFlyover
-            mapView.showsBuildings = true
-            mapViewType = "HybridFlyover"
-            mapView.setCamera(camera, animated: true)
-            sender.setTitle("Standard3D", for: .normal)
-            break
-        case "Standard3D":
-            let camera = MKMapCamera(lookingAtCenter: mapView.centerCoordinate, fromDistance: distance, pitch: pitch, heading: heading)
-            mapView.mapType = .standard
-            mapView.showsBuildings = true
-            mapView.setCamera(camera, animated: true)
-            mapViewType = "StandardFlyover"
-            sender.setTitle("Satellite3D", for: .normal)
-            break
-        default:
-            mapView.mapType = .standard
-            sender.setTitle("Sat Fly", for: .normal)
-            break
-        }
-        
-    }
+    
     
     // Button for centering the user location
     @IBAction func centerLocation(_ sender: UIButton) {
@@ -207,21 +144,33 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         if let coord = manager.location?.coordinate {
             //
             switch mapViewType {
-            case "Standard2D","Satellite2D","Hybrid2D":
-                let region = MKCoordinateRegionMakeWithDistance(coord, 1000, 1000)
-                mapView.setRegion(region, animated: true)
+            case "Standard2D":
+                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance1, pitch: pitch1, heading: heading1)
+                mapView.mapType = .standard
+                mapView.showsBuildings = true
+                mapView.setCamera(camera, animated: true)
+            case "Satellite2D":
+                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance1, pitch: pitch1, heading: heading1)
+                mapView.mapType = .satellite
+                mapView.showsBuildings = true
+                mapView.setCamera(camera, animated: true)
+            case "Hybrid2D":
+                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance1, pitch: pitch1, heading: heading1)
+                mapView.mapType = .hybrid
+                mapView.showsBuildings = true
+                mapView.setCamera(camera, animated: true)
             case "StandardFlyover":
-                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance, pitch: pitch, heading: heading)
+                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance2, pitch: pitch2, heading: heading2)
                 mapView.showsBuildings = true
                 mapView.setCamera(camera, animated: true)
                 mapView.mapType = .standard
             case "SatelliteFlyover":
-                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance, pitch: pitch, heading: heading)
+                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance2, pitch: pitch2, heading: heading2)
                 mapView.showsBuildings = true
                 mapView.setCamera(camera, animated: true)
                 mapView.mapType = .satelliteFlyover
             case "HybridFlyover":
-                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance, pitch: pitch, heading: heading)
+                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance2, pitch: pitch2, heading: heading2)
                 mapView.showsBuildings = true
                 mapView.setCamera(camera, animated: true)
                 mapView.mapType = .hybridFlyover
@@ -392,10 +341,18 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             // let nycLocation = CLLocationCoordinate2D(latitude: 40.731302, longitude: -73.997065)
             
             //print("manager.location?.coordinate = \(String(describing: manager.location?.coordinate))")
+            /*
             let region = MKCoordinateRegionMakeWithDistance((manager.location?.coordinate)!, 1000, 1000)
             mapView.setRegion(region, animated: false)
-            updateCount += 1
-            
+ */
+            if let coord = manager.location?.coordinate {
+                let camera = MKMapCamera(lookingAtCenter: coord, fromDistance: distance2, pitch: pitch2, heading: heading2)
+                mapView.mapType = .satelliteFlyover
+                mapView.showsBuildings = true
+                mapView.setCamera(camera, animated: false)
+                
+                updateCount += 1
+            }
         }
         
         // 2. dist method using distance between two locations

@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FF2-ec-xbe">
-                                <rect key="frame" x="16" y="76" width="343" height="498"/>
+                                <rect key="frame" x="16" y="76" width="343" height="493"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </mapView>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.10000000149011612" translatesAutoresizingMaskIntoConstraints="NO" id="cRf-xc-zct">
@@ -154,54 +154,6 @@
                                     <constraint firstAttribute="height" constant="14" id="LGN-ei-vWM"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="K5m-IT-rA2">
-                                <rect key="frame" x="16" y="540" width="343" height="28"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dab-Hn-9jP">
-                                        <rect key="frame" x="0.0" y="0.0" width="47" height="28"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnc-fC-q5I">
-                                        <rect key="frame" x="47" y="0.0" width="47.5" height="28"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="753" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-5v-NAX">
-                                        <rect key="frame" x="94.5" y="0.0" width="50.5" height="28"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.51428796139999999" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="flaticon1497659250-32">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="0.6315541107" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="centerLocation:" destination="fEF-dS-Tzf" eventType="touchUpInside" id="NhQ-zb-brE"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cjf-kN-cvH">
-                                        <rect key="frame" x="145" y="0.0" width="113" height="28"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.48513527680000001" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                        <state key="normal" title="Satellite3D">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="0.62911598150000003" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="flyoverMap:" destination="fEF-dS-Tzf" eventType="touchUpInside" id="mxg-qf-n94"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FY7-2E-qgf">
-                                        <rect key="frame" x="258" y="0.0" width="85" height="28"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.47774223989999998" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                        <state key="normal" title="Satellite">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="0.63194735739999996" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="changeMapType:" destination="fEF-dS-Tzf" eventType="touchUpInside" id="hig-j5-vCG"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="m4t-5v-NAX" firstAttribute="bottom" secondItem="Cjf-kN-cvH" secondAttribute="bottom" id="6eb-kM-j8c"/>
-                                    <constraint firstItem="Cjf-kN-cvH" firstAttribute="top" secondItem="FY7-2E-qgf" secondAttribute="top" id="TMd-RZ-oUy"/>
-                                    <constraint firstAttribute="height" constant="28" id="qqI-9H-edJ"/>
-                                </constraints>
-                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sB-uZ-pNx">
                                 <rect key="frame" x="16" y="20" width="343" height="56"/>
                                 <subviews>
@@ -285,32 +237,58 @@
                                     <constraint firstItem="D7Z-bn-NmH" firstAttribute="leading" secondItem="1sB-uZ-pNx" secondAttribute="leading" id="yDJ-yb-pyB"/>
                                 </constraints>
                             </view>
-                            <segmentedControl opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWG-vu-jET">
-                                <rect key="frame" x="141" y="436" width="218" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29422713926174499" colorSpace="calibratedRGB"/>
-                                <segments>
-                                    <segment title="Standard"/>
-                                    <segment title="Satellite"/>
-                                    <segment title="Hybrid"/>
-                                </segments>
-                                <connections>
-                                    <action selector="toggleViews:" destination="fEF-dS-Tzf" eventType="valueChanged" id="I0U-n0-gxF"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gzq-yd-oEF">
-                                <rect key="frame" x="141" y="472" width="218" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.26363255033557048" colorSpace="calibratedRGB"/>
-                                <segments>
-                                    <segment title="Standard"/>
-                                    <segment title="Satellite"/>
-                                    <segment title="Hybrid"/>
-                                </segments>
-                                <connections>
-                                    <action selector="toggleView3D:" destination="fEF-dS-Tzf" eventType="valueChanged" id="oKv-cI-6aA"/>
-                                </connections>
-                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="dM9-K6-rdd">
+                                <rect key="frame" x="16" y="467" width="343" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="753" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-5v-NAX">
+                                        <rect key="frame" x="311" y="0.0" width="32" height="33.5"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.51428796139999999" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="flaticon1497659250-32">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="0.6315541107" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="centerLocation:" destination="fEF-dS-Tzf" eventType="touchUpInside" id="NhQ-zb-brE"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vOf-BY-H8C">
+                                        <rect key="frame" x="102" y="33.5" width="241" height="33"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWG-vu-jET">
+                                                <rect key="frame" x="0.0" y="2.5" width="241" height="29"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.72721791107382561" colorSpace="calibratedRGB"/>
+                                                <segments>
+                                                    <segment title="Standard2D"/>
+                                                    <segment title="Satellite2D"/>
+                                                    <segment title="Hybrid2D"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="toggleViews:" destination="fEF-dS-Tzf" eventType="valueChanged" id="I0U-n0-gxF"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ofn-Cu-A5m">
+                                        <rect key="frame" x="101" y="66.5" width="242" height="33.5"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gzq-yd-oEF">
+                                                <rect key="frame" x="0.0" y="3" width="242" height="29"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.71004614093959728" colorSpace="calibratedRGB"/>
+                                                <segments>
+                                                    <segment title="Standard3D"/>
+                                                    <segment title="Satellite3D"/>
+                                                    <segment title="Hybrid3D"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="toggleView3D:" destination="fEF-dS-Tzf" eventType="valueChanged" id="oKv-cI-6aA"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="FdG-eK-v6A"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -318,11 +296,13 @@
                             <constraint firstAttribute="trailing" secondItem="JiH-hU-1oK" secondAttribute="trailing" constant="16" id="2wB-Qw-uzb"/>
                             <constraint firstAttribute="trailing" secondItem="Gsz-IU-DvY" secondAttribute="trailing" constant="16" id="8Mu-jk-wr6"/>
                             <constraint firstItem="FF2-ec-xbe" firstAttribute="top" secondItem="ZsU-mf-4bW" secondAttribute="bottom" constant="56" id="8pR-ej-vbf"/>
+                            <constraint firstItem="dM9-K6-rdd" firstAttribute="leading" secondItem="ts3-IX-1GJ" secondAttribute="leading" constant="16" id="90b-ck-P60"/>
                             <constraint firstItem="JiH-hU-1oK" firstAttribute="leading" secondItem="ts3-IX-1GJ" secondAttribute="leading" constant="16" id="B36-tp-fwo"/>
-                            <constraint firstItem="aQl-Mj-gyJ" firstAttribute="top" secondItem="FF2-ec-xbe" secondAttribute="bottom" constant="3" id="CHz-AV-cvw"/>
+                            <constraint firstItem="aQl-Mj-gyJ" firstAttribute="top" secondItem="FF2-ec-xbe" secondAttribute="bottom" constant="8" id="CHz-AV-cvw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FF2-ec-xbe" secondAttribute="trailing" id="FcX-Jt-rs3"/>
                             <constraint firstItem="aQl-Mj-gyJ" firstAttribute="leading" secondItem="JiH-hU-1oK" secondAttribute="leading" id="FeR-FU-t0G"/>
-                            <constraint firstItem="uzw-We-Joo" firstAttribute="top" secondItem="FF2-ec-xbe" secondAttribute="bottom" constant="93" id="G7O-7p-zAT"/>
+                            <constraint firstItem="uzw-We-Joo" firstAttribute="top" secondItem="FF2-ec-xbe" secondAttribute="bottom" constant="98" id="G7O-7p-zAT"/>
+                            <constraint firstItem="aQl-Mj-gyJ" firstAttribute="top" secondItem="dM9-K6-rdd" secondAttribute="bottom" constant="10" id="Hbw-Av-BdK"/>
                             <constraint firstAttribute="trailing" secondItem="TRf-If-een" secondAttribute="trailing" constant="16" id="II1-M3-9o7"/>
                             <constraint firstItem="1sB-uZ-pNx" firstAttribute="top" secondItem="ZsU-mf-4bW" secondAttribute="bottom" id="Nbu-xM-usD"/>
                             <constraint firstItem="FF2-ec-xbe" firstAttribute="leading" secondItem="ts3-IX-1GJ" secondAttribute="leadingMargin" id="QIv-HH-Ta7"/>
@@ -332,19 +312,17 @@
                             <constraint firstItem="TRf-If-een" firstAttribute="leading" secondItem="ts3-IX-1GJ" secondAttribute="leading" constant="16" id="eEg-E9-IBQ"/>
                             <constraint firstAttribute="trailing" secondItem="cRf-xc-zct" secondAttribute="trailing" constant="16" id="gIB-fE-nsB"/>
                             <constraint firstItem="Gsz-IU-DvY" firstAttribute="leading" secondItem="ts3-IX-1GJ" secondAttribute="leading" constant="16" id="go7-bw-c3h"/>
-                            <constraint firstItem="JiH-hU-1oK" firstAttribute="top" secondItem="FF2-ec-xbe" secondAttribute="bottom" constant="18" id="jq2-n1-el0"/>
+                            <constraint firstItem="JiH-hU-1oK" firstAttribute="top" secondItem="FF2-ec-xbe" secondAttribute="bottom" constant="23" id="jq2-n1-el0"/>
                             <constraint firstAttribute="bottom" secondItem="fJQ-BE-3ic" secondAttribute="bottom" constant="61" id="mQk-A2-tZb"/>
                             <constraint firstAttribute="trailing" secondItem="fJQ-BE-3ic" secondAttribute="trailing" constant="16" id="n4n-IL-mWn"/>
-                            <constraint firstItem="aQl-Mj-gyJ" firstAttribute="top" secondItem="K5m-IT-rA2" secondAttribute="bottom" constant="9" id="sOL-th-ENb"/>
+                            <constraint firstAttribute="trailing" secondItem="dM9-K6-rdd" secondAttribute="trailing" constant="16" id="q50-NW-KSa"/>
                             <constraint firstItem="TRf-If-een" firstAttribute="leading" secondItem="JAA-E5-FZn" secondAttribute="leading" id="se1-wG-zqW"/>
                             <constraint firstItem="fJQ-BE-3ic" firstAttribute="leading" secondItem="ts3-IX-1GJ" secondAttribute="leading" constant="16" id="swg-PH-w6D"/>
                             <constraint firstItem="JAA-E5-FZn" firstAttribute="top" secondItem="cRf-xc-zct" secondAttribute="bottom" constant="8" symbolic="YES" id="uN3-nY-3o6"/>
                             <constraint firstItem="aQl-Mj-gyJ" firstAttribute="trailing" secondItem="JiH-hU-1oK" secondAttribute="trailing" id="v2B-ww-dHo"/>
                             <constraint firstItem="FF2-ec-xbe" firstAttribute="top" secondItem="1sB-uZ-pNx" secondAttribute="bottom" id="vHh-ej-b37"/>
                             <constraint firstItem="Gsz-IU-DvY" firstAttribute="top" secondItem="cRf-xc-zct" secondAttribute="bottom" constant="39" id="xNf-TX-a8M"/>
-                            <constraint firstAttribute="trailing" secondItem="K5m-IT-rA2" secondAttribute="trailing" constant="16" id="xPs-Nx-jMm"/>
                             <constraint firstItem="TRf-If-een" firstAttribute="trailing" secondItem="JAA-E5-FZn" secondAttribute="trailing" id="xrH-ob-Gvp"/>
-                            <constraint firstItem="K5m-IT-rA2" firstAttribute="leading" secondItem="ts3-IX-1GJ" secondAttribute="leading" constant="16" id="yiG-7s-0nG"/>
                             <constraint firstItem="cRf-xc-zct" firstAttribute="leading" secondItem="ts3-IX-1GJ" secondAttribute="leading" constant="16" id="zJ8-8w-oyL"/>
                         </constraints>
                     </view>
