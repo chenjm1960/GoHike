@@ -9,7 +9,6 @@
 
 // Comments to Fix
 /*
- 1. The 3Dview button doesn't do anything if the app is in Hybrid or Standard mode.  Perhaps a better approach would be to use a UISegmentedControl.  Probably you should have four options:  Standard, 3D, Satellite, and Hybrid.  One advantage of using a UISegmentedControl is that it would make it obvious which option is currently selected, which your current approach doesn't really do.
  
  2. Your app should be able to handle a situation where a user does not allow the app to use its location.  Right now, the app just keeps trying as if everything is fine.  If the user does not allow the app to access the device's location, you should make it clear that the user must go to settings to allow this.  This is low priority until you have more of your features done, but this is going to be important for your finished app.
  */

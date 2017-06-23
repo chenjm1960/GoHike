@@ -229,7 +229,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.88674805981897142" green="0.91536208207246861" blue="0.95326904773712162" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.88674805980000004" green="0.91536208210000003" blue="0.95326904769999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="D7Z-bn-NmH" secondAttribute="trailing" id="CH6-gk-cO0"/>
                                     <constraint firstAttribute="bottom" secondItem="D7Z-bn-NmH" secondAttribute="bottom" id="LQR-dX-a8g"/>
@@ -240,22 +240,30 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="dM9-K6-rdd">
                                 <rect key="frame" x="16" y="467" width="343" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="753" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-5v-NAX">
-                                        <rect key="frame" x="311" y="0.0" width="32" height="33.5"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.51428796139999999" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="flaticon1497659250-32">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="0.6315541107" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="centerLocation:" destination="fEF-dS-Tzf" eventType="touchUpInside" id="NhQ-zb-brE"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="190" translatesAutoresizingMaskIntoConstraints="NO" id="Trb-Qe-RXj">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="33.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zln-fa-hVD">
+                                                <rect key="frame" x="0.0" y="1.5" width="76.5" height="30"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="753" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-5v-NAX">
+                                                <rect key="frame" x="266.5" y="0.5" width="76.5" height="32"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.31842491609798662" colorSpace="calibratedRGB"/>
+                                                <state key="normal" image="flaticon1497659250-32">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="0.6315541107" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="centerLocation:" destination="fEF-dS-Tzf" eventType="touchUpInside" id="NhQ-zb-brE"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vOf-BY-H8C">
                                         <rect key="frame" x="102" y="33.5" width="241" height="33"/>
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWG-vu-jET">
                                                 <rect key="frame" x="0.0" y="2.5" width="241" height="29"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.72721791107382561" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.57419253355704702" colorSpace="calibratedRGB"/>
                                                 <segments>
                                                     <segment title="Standard2D"/>
                                                     <segment title="Satellite2D"/>
@@ -272,7 +280,7 @@
                                         <subviews>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gzq-yd-oEF">
                                                 <rect key="frame" x="0.0" y="3" width="242" height="29"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.71004614093959728" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.58811346476510062" colorSpace="calibratedRGB"/>
                                                 <segments>
                                                     <segment title="Standard3D"/>
                                                     <segment title="Satellite3D"/>
@@ -286,7 +294,9 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Trb-Qe-RXj" secondAttribute="trailing" id="0gK-18-6vN"/>
                                     <constraint firstAttribute="height" constant="100" id="FdG-eK-v6A"/>
+                                    <constraint firstItem="Trb-Qe-RXj" firstAttribute="leading" secondItem="dM9-K6-rdd" secondAttribute="leading" id="g78-mH-f60"/>
                                 </constraints>
                             </stackView>
                         </subviews>
