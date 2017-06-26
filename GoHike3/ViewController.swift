@@ -38,6 +38,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     var mapViewType = "SatelliteFlyover"
     var manager = CLLocationManager()
     var totalDistanceMeters2:Double = 0.0
+    var mapDrawingDistance:Double = 0.0 // distance counter used for Timer function in drawing route
     var preTimeInterval = 0.0
     var startLocation: CLLocation!
     var lastLocation: CLLocation!
@@ -115,12 +116,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             sourceLocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
         }
         
-        // use Timer to try to allow for drawing a circular route where coord(i) == coord(f)
-        /*
-        Timer.scheduledTimer(withTimeInterval: <#T##TimeInterval#>, repeats: <#T##Bool#>) { (<#Timer#>) in
-            <#code#>
-        }
-        */
     }
     
     // use the start and final coords for plotting the route
@@ -365,9 +360,36 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             if distance > 0.0 {
                 
                 totalDistanceMeters2 += distance
+                mapDrawingDistance += distance
+                let mapDrawDistanceMiles = mapDrawingDistance * 0.0006214
                 //self.totalDistMiles2.text = String(format: "%.4f",(totalDistanceMeters2 * 0.0006214))
                 progressBarPercent = ((totalDistanceMeters2 * 0.0006214)/10)
                 progressViewDist.setProgress(Float(progressBarPercent), animated: true)
+                
+                // place a pin every 0.2 miles increment:
+                if mapDrawDistanceMiles >= 0.2 {
+                    if let coord = self.manager.location?.coordinate {
+                        let placeMarker = MKPointAnnotation()
+                        placeMarker.coordinate = coord
+                        self.mapView.addAnnotation(placeMarker)
+                        mapDrawingDistance = 0.0
+                    }
+                }
+                
+                
+                
+                // setup pinning placemarkers along path every 0.2 miles:
+                /*
+                 // Below code will add a marker at user location every 5 sec.
+                 Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { (timer) in
+                 if let coord = self.manager.location?.coordinate {
+                 let placeMarker = MKPointAnnotation()
+                 placeMarker.coordinate = coord
+                 self.mapView.addAnnotation(placeMarker)
+                 }
+                 })
+                 */
+                
                 
             }
             
