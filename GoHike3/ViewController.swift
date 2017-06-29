@@ -7,13 +7,6 @@
 //
 //  This is the Final Version of GoHike as of 6/21/17
 
-// Comments to Fix
-/*
- 
- 2. Your app should be able to handle a situation where a user does not allow the app to use its location.  Right now, the app just keeps trying as if everything is fine.  If the user does not allow the app to access the device's location, you should make it clear that the user must go to settings to allow this.  This is low priority until you have more of your features done, but this is going to be important for your finished app.
- */
-
-
 
 import UIKit
 import CoreLocation
@@ -24,6 +17,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     
     // constants below are the camera settings for overhead views(2D like)
     let distance1: CLLocationDistance = 2000
+    let distance3: CLLocationDistance = 6000 // used for drawMapPath() 2D view distance height
     let pitch1: CGFloat = 0.0
     let heading1 = 0.0
     
@@ -183,11 +177,18 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         manager.delegate = self
         mapView.delegate = self
         
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        //manager.requestAlwaysAuthorization()
+        manager.allowsBackgroundLocationUpdates = true
+        //manager.startUpdatingLocation()
+        /*
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             
             manager.desiredAccuracy = kCLLocationAccuracyBest
             manager.requestWhenInUseAuthorization()
             //manager.requestAlwaysAuthorization()
+            manager.allowsBackgroundLocationUpdates = true
             manager.startUpdatingLocation()
             
             mapView.showsUserLocation = true
@@ -196,17 +197,97 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             mapView.showsBuildings = true
             mapView.showsPointsOfInterest = true
             
-            // Makes the progressView Bar thicker
-            self.progressView.transform = CGAffineTransform(scaleX: 1.0, y: 6.0)
-            self.progressViewDist.transform = CGAffineTransform(scaleX: 1.0, y: 6.0)
             
         } else {
             
             manager.requestWhenInUseAuthorization()
             
         }
+        */
+        // Makes the progressView Bar thicker
+        self.progressView.transform = CGAffineTransform(scaleX: 1.0, y: 6.0)
+        self.progressViewDist.transform = CGAffineTransform(scaleX: 1.0, y: 6.0)
         
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        locationAuthStatus()
+        
+    }
+    
+    func locationAuthStatus() {
+        
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            
+            manager.startUpdatingLocation()
+            mapView.showsUserLocation = true
+            
+            let alertController = UIAlertController (title: "Title", message: "GoHike is Using your GPS Location. Go to Settings to Turn Off and Exit GoHike?", preferredStyle: .alert)
+            
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+            }
+            alertController.addAction(settingsAction)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
+        } else {
+            
+            let alertController = UIAlertController (title: "Title", message: "GoHike Needs to Know your GPS Location. Go to Settings to Turn On?", preferredStyle: .alert)
+            
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                    return
+                }
+                
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                    })
+                }
+            }
+            alertController.addAction(settingsAction)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            present(alertController, animated: true, completion: nil)
+            
+            
+            manager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        if status == .authorizedWhenInUse {
+            
+            mapView.showsUserLocation = true
+            mapView.showsCompass = true
+            mapView.showsScale = true
+            mapView.showsBuildings = true
+            mapView.showsPointsOfInterest = true
+            
+        } else {
+            
+            manager.requestWhenInUseAuthorization()
+            
+        }
+    }
+    
     
     func drawMapPath () {
         
@@ -251,7 +332,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         }
         
         // 6.
-        self.mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: false )
+        self.mapView.addAnnotations([sourceAnnotation,destinationAnnotation])
+        //self.mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: false )
         
         // 7.
         let directionRequest = MKDirectionsRequest()
@@ -278,10 +360,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             let route = response.routes[0]
             self.mapView.add((route.polyline), level: MKOverlayLevel.aboveRoads)
             
-            let region = MKCoordinateRegionMakeWithDistance(self.sourceLocation, 2000, 2000)
-            self.mapView.setRegion(region, animated: true)
-            
-            self.mapViewType = "Standard"
+            let camera = MKMapCamera(lookingAtCenter: self.destinationLocation, fromDistance: self.distance3, pitch: self.pitch1, heading: self.heading1)
+            self.mapView.mapType = .standard
+            self.mapView.showsBuildings = true
+            self.mapView.setCamera(camera, animated: true)
         }
         
         sourceLocation = destinationLocation
@@ -296,6 +378,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         
         return renderer
     }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

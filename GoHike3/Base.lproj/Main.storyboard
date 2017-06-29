@@ -160,28 +160,27 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="D7Z-bn-NmH">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="56"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cgE-bq-aQu">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cgE-bq-aQu">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="28"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irb-xo-yFD">
-                                                        <rect key="frame" x="0.0" y="4" width="83" height="20.5"/>
-                                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="0.0" y="4" width="146" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTo-7B-S5q">
-                                                        <rect key="frame" x="157" y="4" width="44.5" height="20.5"/>
+                                                        <rect key="frame" x="146" y="4" width="78.5" height="20.5"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLY-BS-S9w">
-                                                        <rect key="frame" x="275.5" y="4" width="67.5" height="20.5"/>
+                                                        <rect key="frame" x="224.5" y="4" width="118.5" height="20.5"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                        <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -190,26 +189,26 @@
                                                 <rect key="frame" x="0.0" y="28" width="343" height="28"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press to Map Route:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hno-OG-idu">
-                                                        <rect key="frame" x="0.0" y="4" width="200.5" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="4" width="193.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                        <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsH-cf-gxk">
-                                                        <rect key="frame" x="200.5" y="4" width="72.5" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                        <state key="normal" title=" Start" image="001-gps">
-                                                            <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="193.5" y="4" width="76" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                        <state key="normal" title=" Start" image="street_view 2">
+                                                            <color key="titleColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="Reset:" destination="fEF-dS-Tzf" eventType="touchUpInside" id="DsG-5e-iJN"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LnO-FJ-Qss">
-                                                        <rect key="frame" x="273" y="4" width="70" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                                        <state key="normal" title=" Stop" image="flaticon1497936069-32">
-                                                            <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <rect key="frame" x="269.5" y="4" width="73.5" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                        <state key="normal" title=" Stop" image="flag_2">
+                                                            <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="endDrawPath:" destination="fEF-dS-Tzf" eventType="touchUpInside" id="DzU-aN-p38"/>
@@ -229,7 +228,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.88674805980000004" green="0.91536208210000003" blue="0.95326904769999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.23612351790476194" green="0.30866816076190479" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="D7Z-bn-NmH" secondAttribute="trailing" id="CH6-gk-cO0"/>
                                     <constraint firstAttribute="bottom" secondItem="D7Z-bn-NmH" secondAttribute="bottom" id="LQR-dX-a8g"/>
@@ -248,7 +247,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="753" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4t-5v-NAX">
                                                 <rect key="frame" x="266.5" y="0.5" width="76.5" height="32"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.31842491609798662" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="1" alpha="0.58643561241610742" colorSpace="calibratedWhite"/>
                                                 <state key="normal" image="flaticon1497659250-32">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="0.6315541107" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -351,8 +350,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="001-gps" width="16" height="16"/>
+        <image name="flag_2" width="20" height="20"/>
         <image name="flaticon1497659250-32" width="32" height="32"/>
-        <image name="flaticon1497936069-32" width="16" height="16"/>
+        <image name="street_view 2" width="20" height="20"/>
     </resources>
 </document>
