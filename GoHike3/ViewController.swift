@@ -426,8 +426,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
                 progressBarPercent = ((totalDistanceMeters2 * 0.0006214)/10)
                 progressViewDist.setProgress(Float(progressBarPercent), animated: true)
                 
-                // place a pin every 0.2 miles increment:
-                if mapDrawDistanceMiles >= 0.2 {
+                // place a pin every 0.3 miles increment:
+                if mapDrawDistanceMiles >= 0.3 {
                     if let coord = self.manager.location?.coordinate {
                         let placeMarker = MKPointAnnotation()
                         placeMarker.coordinate = coord
@@ -435,8 +435,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
                         mapDrawingDistance = 0.0
                     }
                 }
-                
-                
                 
                 // setup pinning placemarkers along path every 0.2 miles:
                 /*
@@ -449,7 +447,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
                  }
                  })
                  */
-                
                 
             }
             
