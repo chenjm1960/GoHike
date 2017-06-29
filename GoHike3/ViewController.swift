@@ -16,7 +16,7 @@ import MapKit
 class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
     
     // constants below are the camera settings for overhead views(2D like)
-    let distance1: CLLocationDistance = 2000
+    let distance1: CLLocationDistance = 3000
     let distance3: CLLocationDistance = 6000 // used for drawMapPath() 2D view distance height
     let pitch1: CGFloat = 0.0
     let heading1 = 0.0
@@ -181,30 +181,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         manager.requestWhenInUseAuthorization()
         //manager.requestAlwaysAuthorization()
         manager.allowsBackgroundLocationUpdates = true
-        //manager.startUpdatingLocation()
-        /*
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            
-            manager.desiredAccuracy = kCLLocationAccuracyBest
-            manager.requestWhenInUseAuthorization()
-            //manager.requestAlwaysAuthorization()
-            manager.allowsBackgroundLocationUpdates = true
-            manager.startUpdatingLocation()
-            
-            mapView.showsUserLocation = true
-            mapView.showsCompass = true
-            mapView.showsScale = true
-            mapView.showsBuildings = true
-            mapView.showsPointsOfInterest = true
-            
-            
-        } else {
-            
-            manager.requestWhenInUseAuthorization()
-            
-        }
-        */
-        // Makes the progressView Bar thicker
         self.progressView.transform = CGAffineTransform(scaleX: 1.0, y: 6.0)
         self.progressViewDist.transform = CGAffineTransform(scaleX: 1.0, y: 6.0)
         
@@ -225,6 +201,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             manager.startUpdatingLocation()
             mapView.showsUserLocation = true
             
+            // Everytime GoHike is opened, it will let you know the location GPS is active:
             let alertController = UIAlertController (title: "Title", message: "GoHike is Using your GPS Location. Go to Settings to Turn Off and Exit GoHike?", preferredStyle: .alert)
             
             let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
@@ -245,7 +222,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             present(alertController, animated: true, completion: nil)
             
         } else {
-            
+             // App will alert you that GoHike needs you to turn on the location GPS:
             let alertController = UIAlertController (title: "Title", message: "GoHike Needs to Know your GPS Location. Go to Settings to Turn On?", preferredStyle: .alert)
             
             let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
