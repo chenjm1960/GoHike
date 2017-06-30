@@ -38,11 +38,15 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
     var lastLocation: CLLocation!
     var updateCount = 0
     var runSpeed: Double = 0.000
+    var maxSpeed = 0.0
     
     // Label for OpenWeatherMap data:
     @IBOutlet weak var citiName: UILabel!
     @IBOutlet weak var tempurature: UILabel!
     @IBOutlet weak var weatherType: UILabel!
+    
+    @IBOutlet weak var maxSpeedLabel: UILabel!
+    @IBOutlet weak var maxDistLabel: UILabel!
     
     
     @IBAction func toggleViews(_ sender: UISegmentedControl) {
@@ -369,6 +373,13 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             
             runSpeed = location.speed*(2.236) // converted to miles/hour
             
+            // record the maxSpeed attained for current hike:
+            if runSpeed > maxSpeed {
+                let maxSpeedValue = String(format: "%.2f",(runSpeed))
+                maxSpeedLabel.text = "Max Speed: " + maxSpeedValue
+                maxSpeed = runSpeed
+            }
+            
             //print("runSpeed = \(runSpeed)")
             // Using iOS Progress View Bar to plot speed instead of CorePlot
             // max speed scale = 12 miles/hr
@@ -422,9 +433,11 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
                 totalDistanceMeters2 += distance
                 mapDrawingDistance += distance
                 let mapDrawDistanceMiles = mapDrawingDistance * 0.0006214
-                //self.totalDistMiles2.text = String(format: "%.4f",(totalDistanceMeters2 * 0.0006214))
                 progressBarPercent = ((totalDistanceMeters2 * 0.0006214)/10)
                 progressViewDist.setProgress(Float(progressBarPercent), animated: true)
+                
+                let maxDistValue = String(format: "%.2f",(totalDistanceMeters2 * 0.0006214))
+                maxDistLabel.text = "Max Distance: " + maxDistValue
                 
                 // place a pin every 0.3 miles increment:
                 if mapDrawDistanceMiles >= 0.3 {
@@ -528,6 +541,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
         
         // Reset to total distance to 0.0 onthe distance-bar
         totalDistanceMeters2 = 0.0
+        maxSpeed = 0.0
+        let maxSpeedValue = String(format: "%.2f",(runSpeed))
+        maxSpeedLabel.text = "Max Speed: " + maxSpeedValue
         
     }
     
