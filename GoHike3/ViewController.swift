@@ -206,7 +206,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             mapView.showsUserLocation = true
             
             // Everytime GoHike is opened, it will let you know the location GPS is active:
-            let alertController = UIAlertController (title: "Title", message: "GoHike is Using your GPS Location. Go to Settings to Turn Off and Exit GoHike?", preferredStyle: .alert)
+            let alertController = UIAlertController (title: "Alert!", message: "GoHike is Using your GPS Location. Go to Settings to Turn Off and Exit GoHike?", preferredStyle: .alert)
             
             let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
                 guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
@@ -227,7 +227,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelega
             
         } else {
              // App will alert you that GoHike needs you to turn on the location GPS:
-            let alertController = UIAlertController (title: "Title", message: "GoHike Needs to Know your GPS Location. Go to Settings to Turn On?", preferredStyle: .alert)
+            let alertController = UIAlertController (title: "Alert!", message: "GoHike Needs to Know your GPS Location. Go to Settings to Turn On?", preferredStyle: .alert)
             
             let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
                 guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
