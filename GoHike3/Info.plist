@@ -7,16 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string></string>
 	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>MKDirectionsRequest</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.apple.maps.directionsrequest</string>
-			</array>
-		</dict>
-	</array>
+	<array/>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIcons</key>
@@ -39,15 +30,6 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>MKDirectionsApplicationSupportedModes</key>
-	<array>
-		<string>MKDirectionsModeBike</string>
-		<string>MKDirectionsModeCar</string>
-		<string>MKDirectionsModeOther</string>
-		<string>MKDirectionsModePedestrian</string>
-		<string>MKDirectionsModeStreetCar</string>
-		<string>MKDirectionsModeTaxi</string>
-	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>

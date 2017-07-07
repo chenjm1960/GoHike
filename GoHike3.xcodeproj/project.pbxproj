@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F3A00A41EFA61BE0033696A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3A00A31EFA61BE0033696A /* MapKit.framework */; };
 		1F5C46771EFA541400B57A6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C46761EFA541400B57A6C /* AppDelegate.swift */; };
 		1F5C46791EFA541400B57A6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C46781EFA541400B57A6C /* ViewController.swift */; };
 		1F5C467C1EFA541400B57A6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5C467A1EFA541400B57A6C /* Main.storyboard */; };
@@ -17,7 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1F3A00A31EFA61BE0033696A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1F5C46731EFA541400B57A6C /* GoHike3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoHike3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F5C46761EFA541400B57A6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F5C46781EFA541400B57A6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,7 +31,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F3A00A41EFA61BE0033696A /* MapKit.framework in Frameworks */,
 				1F5C468C1EFA581D00B57A6C /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,7 +71,6 @@
 		1F5C468A1EFA581D00B57A6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F3A00A31EFA61BE0033696A /* MapKit.framework */,
 				1F5C468B1EFA581D00B57A6C /* CoreLocation.framework */,
 			);
 			name = Frameworks;
@@ -116,7 +112,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
